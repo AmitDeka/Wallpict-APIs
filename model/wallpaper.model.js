@@ -8,7 +8,7 @@ const wallpaperSchema = new mongoose.Schema(
     },
     wallpaperResolution: {
       type: String,
-      required: true,
+      required: false,
     },
     categoryName: {
       type: String,
