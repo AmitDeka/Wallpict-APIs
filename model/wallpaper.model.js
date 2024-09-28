@@ -11,7 +11,8 @@ const wallpaperSchema = new mongoose.Schema(
       required: false,
     },
     categoryName: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
       required: true,
     },
     wallpaperURL: {
