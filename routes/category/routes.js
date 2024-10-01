@@ -23,9 +23,12 @@ const addCategory = async (req, res) => {
 const getAllCategory = async (req, res) => {
   try {
     const category = await Category.find();
+    const totalCount = await Category.countDocuments();
+
     res.status(200).send({
       success: true,
       category,
+      totalCount,
     });
   } catch (error) {
     res.status(500).send({

@@ -46,9 +46,13 @@ const getAllWallpaper = async (req, res) => {
       .sort({ _id: -1 })
       .skip(skip)
       .limit(limit);
+
+    const totalCount = await Wallpaper.countDocuments();
+
     res.status(200).send({
       success: true,
       wallpaper,
+      totalCount,
     });
   } catch (error) {
     res.status(500).send({
