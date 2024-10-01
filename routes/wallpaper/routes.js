@@ -42,7 +42,10 @@ const getAllWallpaper = async (req, res) => {
       query.wallpaperName = { $regex: new RegExp(search, "i") };
     }
 
-    const wallpaper = await Wallpaper.find(query).skip(skip).limit(limit);
+    const wallpaper = await Wallpaper.find(query)
+      .sort({ _id: -1 })
+      .skip(skip)
+      .limit(limit);
     res.status(200).send({
       success: true,
       wallpaper,
