@@ -4,12 +4,12 @@ const {
   addCategory,
   getAllCategory,
   deleteCategory,
-  updateCategory,
+  //   updateCategory,
 } = require("./routes");
 
 router.post("/", addCategory);
 router.get("/", getAllCategory);
 router.delete("/:id", deleteCategory);
-router.put("/:id", updateCategory);
+// router.put("/:id", updateCategory);
 
 module.exports = router;
