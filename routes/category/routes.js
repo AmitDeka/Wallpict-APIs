@@ -59,8 +59,6 @@ const updateCategory = async (req, res) => {
     const { id } = req.params;
     const { categoryName } = req.body;
 
-    // Validate the incoming data (e.g., check if categoryName is provided)
-
     const updatedCategory = await Category.findByIdAndUpdate(
       id,
       { categoryName },

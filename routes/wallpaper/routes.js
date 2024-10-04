@@ -78,8 +78,37 @@ const deleteWallpaper = async (req, res) => {
   }
 };
 
+const updateWallpaper = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { wallpaperName, wallpaperResolution, categoryName, wallpaperURL } =
+      req.body;
+    const updatedWallpaper = await Wallpaper.findByIdAndUpdate(
+      id,
+      { wallpaperName, wallpaperResolution, categoryName, wallpaperURL },
+      { new: true } // This option ensures the response contains the updated document
+    );
+
+    if (!updatedWallpaper) {
+      return res.status(404).json({
+        message: "Wallpaper not found",
+      });
+    }
+    res.status(200).json({
+      message: "Wallpaper updated successfully",
+      wallpaper: updatedWallpaper,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Server error",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   addWallpaper,
   getAllWallpaper,
   deleteWallpaper,
+  updateWallpaper,
 };
