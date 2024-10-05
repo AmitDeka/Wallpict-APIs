@@ -86,7 +86,7 @@ const updateWallpaper = async (req, res) => {
     const updatedWallpaper = await Wallpaper.findByIdAndUpdate(
       id,
       { wallpaperName, wallpaperResolution, categoryName, wallpaperURL },
-      { new: true } // This option ensures the response contains the updated document
+      { new: true }
     );
 
     if (!updatedWallpaper) {
