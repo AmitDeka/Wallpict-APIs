@@ -62,6 +62,22 @@ const getAllWallpaper = async (req, res) => {
   }
 };
 
+const getWallpaperById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const wallpaper = await Wallpaper.findById(id);
+    res.status(200).send({
+      success: true,
+      wallpaper,
+    });
+  } catch (error) {
+    res.status(500).send({
+      success: false,
+      error: error.message,
+    });
+  }
+};
+
 const deleteWallpaper = async (req, res) => {
   try {
     const id = req.params.id;
@@ -109,6 +125,7 @@ const updateWallpaper = async (req, res) => {
 module.exports = {
   addWallpaper,
   getAllWallpaper,
+  getWallpaperById,
   deleteWallpaper,
   updateWallpaper,
 };

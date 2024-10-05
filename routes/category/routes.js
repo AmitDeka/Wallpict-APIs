@@ -38,6 +38,22 @@ const getAllCategory = async (req, res) => {
   }
 };
 
+const getCategoryById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const category = await Category.findById(id);
+    res.status(200).send({
+      success: true,
+      category,
+    });
+  } catch (error) {
+    res.status(500).send({
+      success: false,
+      error: error.message,
+    });
+  }
+};
+
 const deleteCategory = async (req, res) => {
   try {
     const id = req.params.id;
@@ -83,6 +99,7 @@ const updateCategory = async (req, res) => {
 module.exports = {
   addCategory,
   getAllCategory,
+  getCategoryById,
   deleteCategory,
   updateCategory,
 };
